@@ -1,10 +1,14 @@
 {
-  "name": "bitwarden-secrets",
+  "name": "insomnia-bitwarden-secrets",
   "version": "0.0.1",
   "private": true,
   "insomnia": {
     "name": "bitwarden-secrets",
+    "displayName": "Bitwarden Secrets Manager Plugin",    
     "description": "Retrieve secrets from Bitwarden Secrets Manager."
   },
-  "main": "main.js"
+  "main": "main.js",
+  "dependencies": {
+    "node-cache": "^5.1.2"
+  }
 }
