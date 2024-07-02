@@ -66,8 +66,10 @@ To retrieve a project by its UUID, use the following template tag in your Insomn
 ```
 
 ### Optional Field
-You can specify an optional field to filter the value. For instance, if you only want to get the `value` field in the example below:
+You can specify an optional field to filter the value. 
 <img src="./images/tag.png" alt="Tag Image" width="500"/>
+
+For instance, if you only want to get the `value` field in the example below:
 
 ```json
 {
