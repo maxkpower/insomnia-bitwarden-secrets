@@ -1,0 +1,10 @@
+{
+  "name": "bitwarden-secrets",
+  "version": "0.0.1",
+  "private": true,
+  "insomnia": {
+    "name": "bitwarden-secrets",
+    "description": "Retrieve secrets from Bitwarden Secrets Manager."
+  },
+  "main": "main.js"
+}
