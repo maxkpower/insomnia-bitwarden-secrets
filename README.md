@@ -23,9 +23,11 @@ iwr https://bws.bitwarden.com/install | iex
 ## Plugin Installation
 In order for Insomnia to recognize the plugin as an Insomnia plugin, please copy the plugin files to the following locations:
 
-MacOS: `~/Library/Application Support/Insomnia/plugins/` (escaped version: `~/Library/Application\ Support/Insomnia/plugins/`)
-Windows: `%APPDATA%\Insomnia\plugins\`
-Linux: `$XDG_CONFIG_HOME/Insomnia/plugins/` or `~/.config/Insomnia/plugins/`
+| OS | Path |
+| --- | --- |
+| MacOS | `~/Library/Application Support/Insomnia/plugins/` (escaped version: `~/Library/Application\ Support/Insomnia/plugins/`) |
+| Windows | `%APPDATA%\Insomnia\plugins\` |
+| Linux | `$XDG_CONFIG_HOME/Insomnia/plugins/` or `~/.config/Insomnia/plugins/` |
 
 ## Plugin Configuration
 
@@ -58,6 +60,7 @@ Below is an example configuration:
 ### Example Usage
 > [!NOTE]  
 > Instead of manually typing the template tags, you can use the [autocomplete menu](https://docs.insomnia.rest/insomnia/environment-variables#referencing-environment-variables) to insert them. Press `Ctrl + Space` wherever environment variables can be used to launch the autocomplete menu and select the desired bws operation.
+> 
 > <img src="./images/autocomplete.png" alt="Autocomplete Image" width="300"/>
 
 
