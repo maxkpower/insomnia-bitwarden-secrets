@@ -23,21 +23,25 @@ iwr https://bws.bitwarden.com/install | iex
 ## Plugin Installation
 In order for Insomnia to recognize the plugin as an Insomnia plugin, please copy the plugin files to the following locations:
 
-MacOS: `~/Library/Application Support/Insomnia/plugins/` (escaped version: ~/Library/Application\ Support/Insomnia/plugins/)
+MacOS: `~/Library/Application Support/Insomnia/plugins/` (escaped version: `~/Library/Application\ Support/Insomnia/plugins/`)
 Windows: `%APPDATA%\Insomnia\plugins\`
 Linux: `$XDG_CONFIG_HOME/Insomnia/plugins/` or `~/.config/Insomnia/plugins/`
 
 ## Plugin Configuration
 
-The plugin requires you to set the bws CLI path and [access token](https://bitwarden.com/help/access-tokens/) in the environment variables. Below is an example configuration:
+The plugin requires you to set the bws CLI path and [access token](https://bitwarden.com/help/access-tokens/) in the environment variables. 
+
+<img src="./images/environment.png" alt="Environment Image" width="800"/>
+
+Below is an example configuration:
 
 ```json
 {
   "__bws_plugin": {
     "cliPath": "/usr/local/bin/bws",
-    "accessToken": "your-access-token"
+    "accessToken": "<your-access-token>"
   },
-  "secret": "{% bws 'getSecret' 'your-secret-uuid' 'value' %}"
+  "secret": "{% bws 'getSecret' 'your-secret-uuid' %}"
 }
 ``` 
 
@@ -70,7 +74,8 @@ To retrieve a project by its UUID, use the following template tag in your Insomn
 ```
 
 ### Optional Field
-You can specify an optional field to filter the value. 
+You can specify an optional field to filter the value.
+
 <img src="./images/tag.png" alt="Tag Image" width="500"/>
 
 For instance, if you only want to get the `value` field in the example below:
@@ -107,4 +112,4 @@ If you find any issues or have suggestions for improvements, feel free to open a
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](https://github.com/maxkpower/insomnia-bitwarden-secrets/blob/main/LICENSE).
