@@ -71,3 +71,7 @@ If you find any issues or have suggestions for improvements, feel free to open a
 ## License
 
 This project is licensed under the [MIT License](https://github.com/maxkpower/insomnia-bitwarden-secrets/blob/main/LICENSE).
+
+## Acknowledgement
+
+- Massive thanks to [@jansgescheit](https://github.com/jansgescheit) for coming up with the idea and testing the plugin!
