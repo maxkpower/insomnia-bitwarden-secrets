@@ -56,6 +56,9 @@ Below is an example configuration:
 -   `Get Project`: Retrieve a project by its UUID.
 
 ### Example Usage
+> [!NOTE]  
+> Instead of manually typing the template tags, you can use the [autocomplete menu](https://docs.insomnia.rest/insomnia/environment-variables#referencing-environment-variables) to insert them. Press `Ctrl + Space` wherever environment variables can be used to launch the autocomplete menu and select the desired bws operation. <img src="./images/autocomplete.png" alt="Autocomplete Image" width="300"/>
+
 
 #### Get Secret
 
@@ -98,13 +101,6 @@ Use the following template tag:
 ```json
 "{% bws 'getSecret' 'your-secret-id' 'value' %}"
 ```
-
-### Using the Autocomplete Menu
-Instead of manually typing the template tags, you can use the autocomplete menu to insert them. Press `Ctrl + Space` wherever environment variables can be used to launch the autocomplete menu and select the desired bws operation.
-
-<img src="./images/autocomplete.png" alt="Autocomplete Image" width="500"/>
-
-For more information on referencing environment variables, visit the [Insomnia documentation](https://docs.insomnia.rest/insomnia/environment-variables#referencing-environment-variables).
 
 ## Contributing
 
