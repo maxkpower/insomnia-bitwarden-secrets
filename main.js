@@ -72,6 +72,10 @@ const fetchSecretTemplateTag = {
       if (result === undefined) {
         throw new Error(`Field "${field}" not found in the result.`);
       }
+      if (typeof result === 'string') {
+        result = result.replace(/^"(.*)"$/, '$1');
+      }
+      return result;
     }
 
     return JSON.stringify(result, null, 2);
