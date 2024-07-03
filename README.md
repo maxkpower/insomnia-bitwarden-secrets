@@ -21,7 +21,11 @@ iwr https://bws.bitwarden.com/install | iex
 ```
 
 ## Plugin Installation
+In order for Insomnia to recognize the plugin as an Insomnia plugin, please copy the plugin files to the following locations:
 
+MacOS: `~/Library/Application Support/Insomnia/plugins/` (escaped version: ~/Library/Application\ Support/Insomnia/plugins/)
+Windows: `%APPDATA%\Insomnia\plugins\`
+Linux: `$XDG_CONFIG_HOME/Insomnia/plugins/` or `~/.config/Insomnia/plugins/`
 
 ## Plugin Configuration
 
