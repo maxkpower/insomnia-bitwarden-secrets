@@ -9,43 +9,19 @@ const fetchSecretTemplateTag = {
   name: 'bws',
   displayName: 'BWS CLI',
   liveDisplayName: args => {
-    switch (args[0]?.value) {
-      case 'getSecret':
-        return `BWS → Get Secret: ${args[1]?.value ?? '--'}`;
-      case 'getProject':
-        return `BWS → Get Project: ${args[1]?.value ?? '--'}`;
-      default:
-        return 'BWS → Operation';
-    }
+    return `BWS → Get Secret: ${args[0]?.value ?? '--'}`;
   },
-  description: 'Perform operations using BWS CLI',
+  description: 'Fetch a secret value using BWS CLI',
   args: [
     {
-      displayName: 'Operation',
-      description: 'BWS CLI operation',
-      type: 'enum',
-      options: [
-        { displayName: 'Get Secret', value: 'getSecret' },
-        { displayName: 'Get Project', value: 'getProject' },
-      ],
-      defaultValue: 'getSecret',
-    },
-    {
       displayName: 'UUID',
-      description: 'Bitwarden secret or project UUID',
+      description: 'Bitwarden secret UUID',
       type: 'string',
       defaultValue: '',
-      placeholder: "e.g. 'abc123' for get operations"
-    },
-    {
-      displayName: 'Field Filter (optional)',
-      description: 'Field to filter the value (e.g. "value")',
-      type: 'string',
-      defaultValue: '',
-      placeholder: "e.g. Filter for 'value' only"
+      placeholder: "e.g. 'abc123'"
     }
   ],
-  async run(context, operation, id, field) {
+  async run(context, id) {
     const config = context.context[BWS_PLUGIN_CONFIG_KEY];
     const cliPath = config?.cliPath || '/usr/local/bin/bws';
     const accessToken = config?.accessToken;
@@ -55,30 +31,13 @@ const fetchSecretTemplateTag = {
     }
 
     await checkCli(cliPath);
-    let result;
-    switch (operation) {
-      case 'getSecret':
-        result = await getSecret(cliPath, id, accessToken);
-        break;
-      case 'getProject':
-        result = await getProject(cliPath, id, accessToken);
-        break;
-      default:
-        throw new Error(`Unknown operation: ${operation}`);
-    }
+    const result = await getSecret(cliPath, id, accessToken);
 
-    if (field) {
-      result = result[field];
-      if (result === undefined) {
-        throw new Error(`Field "${field}" not found in the result.`);
-      }
-      if (typeof result === 'string') {
-        result = result.replace(/^"(.*)"$/, '$1');
-      }
-      return result;
+    if (result.value === undefined) {
+      throw new Error(`Field "value" not found in the result.`);
     }
-
-    return JSON.stringify(result, null, 2);
+    // Remove quotes from the result if it is a string
+    return result.value.replace(/^"(.*)"$/, '$1');
   }
 };
 
@@ -124,30 +83,6 @@ async function getSecret(cliPath, secretId, accessToken) {
           resolve(secret);
         } catch (parseError) {
           reject(new Error(`Failed to parse secret: ${parseError.message}`));
-        }
-      }
-    });
-  });
-}
-
-async function getProject(cliPath, projectId, accessToken) {
-  const cacheKey = `project-${projectId}`;
-  const cached = cache.getEntry(cacheKey);
-  if (cached) {
-    return cached;
-  }
-
-  return new Promise((resolve, reject) => {
-    exec(`${cliPath} project get ${projectId} --access-token ${accessToken}`, (error, stdout, stderr) => {
-      if (error) {
-        reject(new Error(`Failed to get project: ${stderr}`));
-      } else {
-        try {
-          const project = JSON.parse(stdout);
-          cache.writeEntry(cacheKey, project);
-          resolve(project);
-        } catch (parseError) {
-          reject(new Error(`Failed to parse project: ${parseError.message}`));
         }
       }
     });

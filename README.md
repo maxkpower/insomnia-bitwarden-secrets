@@ -52,58 +52,16 @@ Below is an example configuration:
 
 ## Usage
 
-### Available Operations
-
--   `Get Secret`: Retrieve a secret by its UUID.
--   `Get Project`: Retrieve a project by its UUID.
-
-### Example Usage
+### Get Secret
 > [!NOTE]  
 > Instead of manually typing the template tags, you can use the [autocomplete menu](https://docs.insomnia.rest/insomnia/environment-variables#referencing-environment-variables) to insert them. Press `Ctrl + Space` wherever environment variables can be used to launch the autocomplete menu and select the desired bws operation.
 > 
 > <img src="./images/autocomplete.png" alt="Autocomplete Image" width="300"/>
 
-
-#### Get Secret
-
 To retrieve a secret by its UUID, use the following template tag in your Insomnia request:
 
 ```json
-"{% bws 'getSecret' 'your-secret-uuid' 'value' %}"
-```
-
-#### Get Project
-
-To retrieve a project by its UUID, use the following template tag in your Insomnia request:
-
-```json
-"{% bws 'getProject' 'your-project-uuid' 'name' %}"
-```
-
-### Optional Field
-You can specify an optional field to filter the value.
-
-<img src="./images/tag.png" alt="Tag Image" width="500"/>
-
-For instance, if you only want to get the `value` field in the example below:
-
-```json
-{
-  "id": "your-secret-id",
-  "organizationId": "your-organization-id",
-  "projectId": "your-project-id",
-  "key": "your-key",
-  "value": "your-value",
-  "note": "",
-  "creationDate": "2024-01-24T10:46:40.970622500Z",
-  "revisionDate": "2024-04-09T08:51:11.377613300Z"
-}
-```
-
-Use the following template tag:
-
-```json
-"{% bws 'getSecret' 'your-secret-id' 'value' %}"
+"{% bws 'getSecret' 'your-secret-uuid' %}"
 ```
 
 ## Contributing
